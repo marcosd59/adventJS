@@ -135,4 +135,4 @@ Creo que ya podemos sacar el gorro navideño, el turrón... ¡Y el árbol de nav
 ### #01: Fácil - Contando ovejas para dormir
 Con la emoción de que llega la navidad, nos está costando dormir bastante últimamente. Vamos a intentar usar este pequeño truco que nos ayudará a dormir más rápido 🐑.
 
-## **Cada carpeta del repositorio contiene los enunciados y soluciones de los respectivos desafíos. ¡Esperamos que disfrutes resolviendo los retos y te deseamos una feliz temporada navideña!** 🎄✨
+¡Desafíos de programación durante la temporada navideña! 🎄✨
