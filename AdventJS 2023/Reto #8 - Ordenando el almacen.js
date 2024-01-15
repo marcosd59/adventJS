@@ -16,32 +16,27 @@ Tu tarea es escribir una función organizeGifts que tome una cadena de regalos c
 */
 
 function organizeGifts(gifts) {
-  let num = [];
-  var regalos = {};
+  let num = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+  var regalos = [];
 
   for (let i = 0; i < gifts.length; i++) {
-    if (
-      gifts[i] == 1 ||
-      gifts[i] == 2 ||
-      gifts[i] == 3 ||
-      gifts[i] == 4 ||
-      gifts[i] == 5 ||
-      gifts[i] == 6 ||
-      gifts[i] == 7 ||
-      gifts[i] == 8 ||
-      gifts[i] == 9 ||
-      gifts[i] == 0
-    ) {
-      num.push(gifts[i]);
-    }
+    parseInt(regalos[i], 10);
+    regalos.push(gifts[i]);
+  }
 
-    if (gifts[i] == 7 || gifts[i + 1] == 6) {
-      regalos[gifts[i] + gifts[i + 1]] = gifts[i + 2];
+  for (let i = 0; i < regalos.length; i++) {
+    if (num.indexOf(regalos[i]) != -1) {
+      if (regalos[i] >= 5) {
+        console.log("[a]");
+        regalos[i] = regalos[i] - 5;
+        console.log(regalos[i]);
+      }
+    } else {
     }
   }
 
   console.log(regalos);
-  console.log(num);
+
   return "";
 }
 
@@ -56,28 +51,3 @@ console.log(result1);
 
   11b: 11 regalos tipo 'b' se empaquetarían en 1 caja y sobraría 1 regalo, resultando en 1 caja suelta {b} y una bolsa con 1 regalo (b)
 */
-
-// for (let i = 0; i < gifts.length; i++) {
-//   if (
-//     gifts[i] != 1 ||
-//     gifts[i] != 2 ||
-//     gifts[i] != 3 ||
-//     gifts[i] != 4 ||
-//     gifts[i] != 5 ||
-//     gifts[i] != 6 ||
-//     gifts[i] != 7 ||
-//     gifts[i] != 8 ||
-//     gifts[i] != 9 ||
-//     gifts[i] != 0
-//   ) {
-//     caracter.push(gifts[i]);
-//   }
-// }
-
-// for (let i = 0; i < gifts.length; i++) {
-//   if (gifts[i] >= 5) {
-//     console.log("[", caracter[i], "]");
-//   }
-// }
-
-// console.log(caracter);
