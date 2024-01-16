@@ -16,29 +16,34 @@ Tu tarea es escribir una función organizeGifts que tome una cadena de regalos c
 */
 
 function organizeGifts(gifts) {
-  let num = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
-  var regalos = [];
+  const countGifts = gifts.match(/\d+/g);
+  const nameGifts = gifts.match(/[^0-9]/g);
 
-  for (let i = 0; i < gifts.length; i++) {
-    parseInt(regalos[i], 10);
-    regalos.push(gifts[i]);
+  let response = "";
+  let i = 0;
+
+  for (let c of countGifts) {
+    const g = nameGifts[i];
+    let a = "";
+
+    c = +c;
+
+    a += `[${g}]`.repeat(c / 50);
+    c %= 50;
+
+    a += `{${g}}`.repeat(c / 10);
+    c %= 10;
+
+    a += `(${g.repeat(c)})`.repeat(+!!c);
+
+    response += a;
+    i++;
   }
 
-  for (let i = 0; i < regalos.length; i++) {
-    if (num.indexOf(regalos[i]) != -1) {
-      if (regalos[i] >= 5) {
-        console.log("[a]");
-        regalos[i] = regalos[i] - 5;
-        console.log(regalos[i]);
-      }
-    } else {
-    }
-  }
-
-  console.log(regalos);
-
-  return "";
+  return response;
 }
+
+module.exports = organizeGifts;
 
 const result1 = organizeGifts(`76a11b`);
 console.log(result1);
