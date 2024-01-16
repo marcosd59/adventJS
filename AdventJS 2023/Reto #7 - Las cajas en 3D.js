@@ -11,32 +11,40 @@ Nota: Ten en cuenta que, en los tests, la primera línea se ve empujada por el c
 */
 
 function drawGift(size, symbol) {
-  let gift = "";
+  let bgSize = size - 2;
 
-  // Build the top layer
-  gift += " ".repeat(size - 1) + "#".repeat(4) + "\n";
+  bgSize += +!(bgSize + 1);
 
-  // Build the middle layers
-  for (let i = 1; i < size; i++) {
-    gift +=
-      " ".repeat(size - i - 1) +
-      "#" +
-      symbol.repeat(i) +
-      "#" +
-      symbol.repeat(size - i - 1) +
-      "#" +
-      "\n";
+  let response = "";
+
+  let topCenter = "";
+  let bottomCenter = "";
+
+  for (const a of [...Array.from({ length: bgSize }).keys()]) {
+    const c = "#" + symbol.repeat(bgSize) + "#" + symbol.repeat(a) + "#";
+    bottomCenter = c + "\n" + bottomCenter;
+    topCenter += " ".repeat(bgSize - a) + c + "\n";
   }
 
-  // Build the bottom layers
-  gift += "#".repeat(size) + symbol.repeat(size) + "#" + "\n";
-  for (let i = size - 1; i > 0; i--) {
-    gift += symbol.repeat(i) + "#" + symbol.repeat(size - i) + "#" + "\n";
-  }
-  gift += "#".repeat(size + 2) + "\n";
+  response =
+    " ".repeat(size - 1) +
+    "#".repeat(size) +
+    "\n" +
+    (
+      topCenter +
+      "#".repeat(size) +
+      symbol.repeat(bgSize) +
+      "#" +
+      "\n" +
+      bottomCenter +
+      "#".repeat(size) +
+      "\n"
+    ).repeat(+!!(size - 1));
 
-  return gift;
+  return response;
 }
+
+module.exports = drawGift;
 
 console.log(drawGift(4, "+"));
 
