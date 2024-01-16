@@ -17,40 +17,25 @@ Crea una función que simule el movimiento del trineo durante un tiempo dado y d
 */
 
 function cyberReindeer(road, time) {
-  let states = [];
-  let trineoIndex = road.indexOf("S");
-  let barriersOpen = false;
+  let moves = [road];
+  let a = 0;
+  let b = ".";
 
-  for (let t = 0; t < time; t++) {
-    // Añadimos el estado actual al arreglo de estados
-    states.push(road);
-
-    // Revisamos si ha llegado el momento de abrir las barreras
-    if (t === 4) {
-      barriersOpen = true;
-      road = road.replace(/\|/g, "*"); // Cambiamos todas las barreras cerradas a abiertas
+  for (let i = 1; i < time; i++) {
+    if (i == 5) road = road.replace(/\|/g, "*");
+    const newRoad = road.replace(/S[\.\*]/, `${b}S`);
+    if (newRoad != road) {
+      a++;
+      b = road[a];
     }
-
-    // Mover el trineo si la siguiente posición no es una barrera cerrada
-    // o si las barreras han sido abiertas
-    if (barriersOpen || road[trineoIndex + 1] !== "|") {
-      // Asegurarse de que el trineo no se mueva fuera de la carretera
-      if (trineoIndex < road.length - 1) {
-        // Construir el nuevo estado de la carretera
-        road =
-          road.substring(0, trineoIndex) +
-          "." +
-          "S" +
-          road.substring(trineoIndex + 2);
-        trineoIndex++; // Actualizar el índice del trineo
-      }
-    }
+    road = newRoad;
+    moves.push(road);
   }
-  // Añadir el estado final después de la última unidad de tiempo transcurrida
-  states.push(road);
 
-  return states;
+  return moves;
 }
+
+module.exports = cyberReindeer;
 
 const road = "S..*...*..";
 const time = 10; // unidades de tiempo
