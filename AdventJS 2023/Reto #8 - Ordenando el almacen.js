@@ -43,8 +43,6 @@ function organizeGifts(gifts) {
   return response;
 }
 
-module.exports = organizeGifts;
-
 const result1 = organizeGifts(`76a11b`);
 console.log(result1);
 
