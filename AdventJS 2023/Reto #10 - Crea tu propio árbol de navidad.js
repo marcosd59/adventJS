@@ -10,9 +10,13 @@ Cada carácter de la cadena representa un adorno del árbol, y vamos utilizándo
 Debemos devolver un string multilínea con el árbol de Navidad formado con los adornos, la altura indicada más una última línea con el tronco formado por el carácter | en el centro y, finalmente, un salto de línea \n.
 */
 
-function createChristmasTree(ornaments, height) {
+function createChristmasTree(ornaments, height)
+{
+
   return "|";
 }
+
+console.log(createChristmasTree("123", 4));
 
 /*
 Por ejemplo si recibimos la cadena "123" y el número 4 como altura, tendríamos que construir este árbol:
