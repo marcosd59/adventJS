@@ -10,17 +10,32 @@ Cada carácter de la cadena representa un adorno del árbol, y vamos utilizándo
 Debemos devolver un string multilínea con el árbol de Navidad formado con los adornos, la altura indicada más una última línea con el tronco formado por el carácter | en el centro y, finalmente, un salto de línea \n.
 */
 
-function createChristmasTree(ornaments, height)
-{
-  for(let i = 0; i < height; i++)
-  {
-    for(let j = 0; j < height; j++)
-    {
-      console.log(height);
+function createChristmasTree(ornaments, height) {
+  let tree = "";
+  let max_width = 2 * height - 1;
+  let ornamentIndex = 0;
+
+  for (let i = 1; i <= height; i++) {
+    let current_width = 2 * i - 1;
+    let spaces = (max_width - current_width) / 2;
+    let line = "";
+
+    for (let j = 0; j < current_width; j++) {
+      if (j % 2 === 0) {
+        line += ornaments[ornamentIndex % ornaments.length];
+        ornamentIndex++;
+      } else {
+        line += " ";
+      }
     }
+
+    tree += " ".repeat(spaces) + line + "\n";
   }
-  return "|";
+
+  tree += " ".repeat((max_width - 1) / 2) + "|" + "\n";
+  return tree;
 }
+
 
 console.log(createChristmasTree("123", 4));
 
