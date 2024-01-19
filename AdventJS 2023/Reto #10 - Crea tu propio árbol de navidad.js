@@ -12,7 +12,13 @@ Debemos devolver un string multilínea con el árbol de Navidad formado con los 
 
 function createChristmasTree(ornaments, height)
 {
-
+  for(let i = 0; i < height; i++)
+  {
+    for(let j = 0; j < height; j++)
+    {
+      console.log(height);
+    }
+  }
   return "|";
 }
 
