@@ -13,17 +13,42 @@ Si se puede formar un palíndromo con un cambio, un array con las dos posiciones
 */
 
 function getIndexsForPalindrome(word) {
-  let indexs = [];
+  function isPalindrome(s) {
+    return s === s.split("").reverse().join("");
+  }
+  if (isPalindrome(word)) {
+    return [];
+  }
 
-  return [0, 0];
+  let freq = {};
+  for (let char of word) {
+    freq[char] = (freq[char] || 0) + 1;
+  }
+
+  let oddCount = Object.values(freq).filter((count) => count % 2 !== 0).length;
+  if (oddCount > 1) {
+    return null;
+  }
+
+  for (let i = 0; i < word.length; i++) {
+    for (let j = i + 1; j < word.length; j++) {
+      let tempWord = word.split("");
+      [tempWord[i], tempWord[j]] = [tempWord[j], tempWord[i]];
+      if (isPalindrome(tempWord.join(""))) {
+        return [i, j];
+      }
+    }
+  }
+
+  return null;
 }
 
-getIndexsForPalindrome('anna') // []
-getIndexsForPalindrome('abab') // [0, 1]
-getIndexsForPalindrome('abac') // null
-getIndexsForPalindrome('aaaaaaaa') // []
-getIndexsForPalindrome('aaababa') // [1, 3]
-getIndexsForPalindrome('caababa') // null
+console.log(getIndexsForPalindrome("anna")); // []
+console.log(getIndexsForPalindrome("abab")); // [0, 1]
+console.log(getIndexsForPalindrome("abac")); // null
+console.log(getIndexsForPalindrome("aaaaaaaa")); // []
+console.log(getIndexsForPalindrome("aaababa")); // [1, 3]
+console.log(getIndexsForPalindrome("caababa")); // null
 
 /*
 Si se puede formar el palíndromo con diferentes intercambios, siempre se debe devolver el primero que se encuentre.
