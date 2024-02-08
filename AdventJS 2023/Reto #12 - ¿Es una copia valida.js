@@ -19,11 +19,92 @@ Sabiendo esto y recibiendo dos cartas. La supuesta original y la copia. Debes de
 */
 
 function checkIsValidCopy(original, copy) {
+  // Definimos las degradaciones básicas
+  const basicDegradations = {
+    A: "a",
+    B: "b",
+    C: "c",
+    D: "d",
+    E: "e",
+    F: "f",
+    G: "g",
+    H: "h",
+    I: "i",
+    J: "j",
+    K: "k",
+    L: "l",
+    M: "m",
+    N: "n",
+    O: "o",
+    P: "p",
+    Q: "q",
+    R: "r",
+    S: "s",
+    T: "t",
+    U: "u",
+    V: "v",
+    W: "w",
+    X: "x",
+    Y: "y",
+    Z: "z",
+    a: "#",
+    b: "#",
+    c: "#",
+    d: "#",
+    e: "#",
+    f: "#",
+    g: "#",
+    h: "#",
+    i: "#",
+    j: "#",
+    k: "#",
+    l: "#",
+    m: "#",
+    n: "#",
+    o: "#",
+    p: "#",
+    q: "#",
+    r: "#",
+    s: "#",
+    t: "#",
+    u: "#",
+    v: "#",
+    w: "#",
+    x: "#",
+    y: "#",
+    z: "#",
+    "#": "+",
+    "+": ":",
+    ":": ".",
+    ".": " ",
+  };
+
+  // Función para obtener todas las degradaciones posibles de un carácter
+  function getAllDegradations(char) {
+    let degradations = [char];
+    while (basicDegradations[char]) {
+      char = basicDegradations[char];
+      degradations.push(char);
+    }
+    return degradations;
+  }
+
+  // Verificamos cada carácter
+  if (original.length !== copy.length) return false;
+  for (let i = 0; i < original.length; i++) {
+    const originalChar = original[i];
+    const copyChar = copy[i];
+    const validDegradations = getAllDegradations(originalChar);
+
+    if (!validDegradations.includes(copyChar)) {
+      return false;
+    }
+  }
   return true;
 }
 
-checkIsValidCopy("Santa Claus", "s#+:. c:. s"); // true
-checkIsValidCopy("Santa Claus", "s#+:.#c:. s"); // false (hay un # donde no debería)
+console.log(checkIsValidCopy("Santa Claus", "s#+:. c:. s")); // true
+console.log(checkIsValidCopy("Santa Claus", "s#+:.#c:. s")); // false (hay un # donde no debería)
 
 /*
 Para entender cómo funcionan las fotocopiadoras y su degradación, mira este ejemplo:
