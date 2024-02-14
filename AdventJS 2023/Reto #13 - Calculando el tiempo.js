@@ -11,8 +11,61 @@ Si terminan antes de las 07:00:00, el tiempo restante hasta las 07:00:00 debe se
 */
 
 function calculateTime(deliveries) {
-  return "00:00:00";
+  for (let i = 0; i < deliveries.length; i++) {
+    let time = deliveries[i].split(":");
+    let hours = parseInt(time[0]);
+    let minutes = parseInt(time[1]);
+    let seconds = parseInt(time[2]);
+
+    if (i === 0) {
+      var totalTime = hours * 3600 + minutes * 60 + seconds;
+    } else {
+      totalTime += hours * 3600 + minutes * 60 + seconds;
+    }
+  }
+
+  let remainingTime = 25200 - totalTime;
+
+  if (remainingTime <= 0) {
+    remainingTime = Math.abs(remainingTime);
+    let hours = Math.floor(remainingTime / 3600);
+    let minutes = Math.floor((remainingTime % 3600) / 60);
+    let seconds = remainingTime % 60;
+
+    if (hours < 10) {
+      hours = "0" + hours;
+    }
+    if (minutes < 10) {
+      minutes = "0" + minutes;
+    }
+    if (seconds < 10) {
+      seconds = "0" + seconds;
+    }
+    let result = `${hours}:${minutes}:${seconds}`;
+    console.log(result);
+    return result;
+  } else if (remainingTime > 0) {
+    let hours = Math.floor(remainingTime / 3600);
+    let minutes = Math.floor((remainingTime % 3600) / 60);
+    let seconds = remainingTime % 60;
+
+    if (hours < 10) {
+      hours = "0" + hours;
+    }
+    if (minutes < 10) {
+      minutes = "0" + minutes;
+    }
+    if (seconds < 10) {
+      seconds = "0" + seconds;
+    }
+    let result = `-${hours}:${minutes}:${seconds}`;
+    console.log(result);
+    return result;
+  }
 }
+
+calculateTime(["02:00:00", "03:00:00", "02:00:00"]);
+// '00:00:00'
 
 calculateTime(["00:10:00", "01:00:00", "03:30:00"]);
 // '-02:20:00'
@@ -20,4 +73,5 @@ calculateTime(["00:10:00", "01:00:00", "03:30:00"]);
 calculateTime(["02:00:00", "05:00:00", "00:30:00"]);
 // '00:30:00'
 
-calculateTime(["00:45:00", "00:45:00", "00:00:30", "00:00:30"]); // '-05:29:00'
+calculateTime(["00:45:00", "00:45:00", "00:00:30", "00:00:30"]);
+// '-05:29:00'
