@@ -9,7 +9,23 @@ Dada un array de enteros no negativos regalos que representa la cantidad de rega
 */
 
 function maxGifts(houses) {
-  return 0;
+  if (houses.length === 0) {
+    return 0;
+  }
+  if (houses.length === 1) {
+    return houses[0];
+  }
+
+  let maxGifts = [];
+  maxGifts[0] = houses[0];
+  maxGifts[1] = Math.max(houses[0], houses[1]);
+
+  for (let i = 2; i < houses.length; i++) {
+    maxGifts[i] = Math.max(maxGifts[i - 1], maxGifts[i - 2] + houses[i]);
+  }
+
+  console.log(maxGifts[houses.length - 1]);
+  return maxGifts[houses.length - 1];
 }
 
 maxGifts([2, 4, 2]); // 4 (4)
