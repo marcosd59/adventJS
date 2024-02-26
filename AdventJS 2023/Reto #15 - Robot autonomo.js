@@ -13,11 +13,11 @@ El almacén se representa como un array de cadenas de texto, donde:
 
 Los movimientos son un array de cadenas de texto, donde:
 
-R mueve al robot una posición a la derecha.
-L mueve al robot una posición a la izquierda.
-U mueve al robot una posición hacia arriba.
-D mueve al robot una posición hacia abajo.
-Hay que tener en cuenta que el robot no puede superar los obstáculos ni los límites del almacén.
+- R mueve al robot una posición a la derecha.
+- L mueve al robot una posición a la izquierda.
+- U mueve al robot una posición hacia arriba.
+- D mueve al robot una posición hacia abajo.
+- Hay que tener en cuenta que el robot no puede superar los obstáculos ni los límites del almacén.
 */
 
 function autonomousDrive(store, movements) {
