@@ -43,8 +43,27 @@ Por ejemplo, al ejecutar tu función transformTree con [3, 1, 0, 8, 12, null, 1]
 */
 
 function transformTree(tree) {
-  return tree;
+  // Función auxiliar para manejar la recursividad con índices.
+  function createNode(index) {
+    // Caso base: si el índice está fuera del array o el valor es null, no hay nodo.
+    if (index >= tree.length || tree[index] === null) {
+      return null;
+    }
+
+    // Crear el nodo actual con su valor y llamar recursivamente para los hijos izquierdo y derecho.
+    return {
+      value: tree[index],
+      left: createNode(2 * index + 1), // Hijo izquierdo en 2*i + 1
+      right: createNode(2 * index + 2), // Hijo derecho en 2*i + 2
+    };
+  }
+
+  // Iniciar la construcción del árbol desde la raíz (índice 0).
+  return createNode(0);
 }
+
+const treeArray = [1, 2, 3, 4, 5];
+console.log(transformTree(treeArray));
 
 /*
 El elfo que está de guardia y que intentó solucionar el problema antes de irse a casa, nos ha dejado algunas pistas:
