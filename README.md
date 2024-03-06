@@ -5,6 +5,10 @@ Este repositorio contiene soluciones creativas y comentadas para los desafíos d
 
 ## AdventJS 2023
 
+![Banner AdventJS 2023](./AdventJS%202023/adventJS-2023.png)
+
+### Retos
+
 - Reto #1: 🎁 ¡Primer regalo repetido!
 - Reto #2: 🏭 Ponemos en marcha la fábrica
 - Reto #3: 😏 El elfo travieso
