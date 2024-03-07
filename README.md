@@ -37,6 +37,10 @@ Este repositorio contiene soluciones creativas y comentadas para los desafíos d
 
 ## AdventJS 2022
 
+![Banner AdventJS 2022](./AdventJS%202022/adventJS-2022.png)
+
+### Retos
+
 - Challenge #1: Automating Christmas gift wrapping!
 - Challenge #2: Nobody wants to do extra hours at work
 - Challenge #3: How many packs of gifts can Santa carry?
@@ -63,6 +67,10 @@ Este repositorio contiene soluciones creativas y comentadas para los desafíos d
 - Challenge #24: The last challenge is a maze
 
 ## AdventJS 2021
+
+![Banner AdventJS 2021](./AdventJS%202021/adventJS-2021.png)
+
+### Retos
 
 ### #25: Normal - El último juego y hasta el año que viene 👋
 
