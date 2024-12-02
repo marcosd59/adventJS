@@ -7,7 +7,20 @@ Nos piden que, para simplificar la tarea de calcular el tiempo total de alquiler
 */
 
 function optimizeIntervals(intervals) {
-  return [];
+  let optimizedIntervals = [];
+  intervals.sort((a, b) => a[0] - b[0]);
+  let currentInterval = intervals[0];
+  for (let i = 1; i < intervals.length; i++) {
+    const nextInterval = intervals[i];
+    if (currentInterval[1] >= nextInterval[0]) {
+      currentInterval[1] = Math.max(currentInterval[1], nextInterval[1]);
+    } else {
+      optimizedIntervals.push(currentInterval);
+      currentInterval = nextInterval;
+    }
+  }
+  optimizedIntervals.push(currentInterval);
+  return optimizedIntervals || [];
 }
 
 optimizeIntervals([
