@@ -21,6 +21,45 @@ Los movimientos son un array de cadenas de texto, donde:
 */
 
 function autonomousDrive(store, movements) {
+  let robotPosition = { row: 0, col: 0 };
+
+  for (let row = 0; row < store.length; row++) {
+    const col = store[row].indexOf("!");
+    if (col !== -1) {
+      robotPosition = { row, col };
+      break;
+    }
+  }
+
+  function isValidMove(row, col) {
+    return (
+      row >= 0 &&
+      row < store.length &&
+      col >= 0 &&
+      col < store[row].length &&
+      store[row][col] === "."
+    );
+  }
+
+  for (const move of movements) {
+    let newRow = robotPosition.row;
+    let newCol = robotPosition.col;
+
+    if (move === "R") newCol++;
+    else if (move === "L") newCol--;
+    else if (move === "U") newRow--;
+    else if (move === "D") newRow++;
+
+    if (isValidMove(newRow, newCol)) {
+      store[robotPosition.row] = store[robotPosition.row].replace("!", ".");
+      robotPosition = { row: newRow, col: newCol };
+      store[robotPosition.row] =
+        store[robotPosition.row].substr(0, newCol) +
+        "!" +
+        store[robotPosition.row].substr(newCol + 1);
+    }
+  }
+
   return store;
 }
 
